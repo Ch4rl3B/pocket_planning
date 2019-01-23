@@ -1,0 +1,35 @@
+buildscript {
+    repositories {
+        jcenter()
+        google()
+        mavenCentral()
+//        maven { url "F:/.m2/repository" }
+        maven { url "C:/Users/user/.m2/repository" }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.0'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        google()
+        mavenCentral()
+//        maven { url "F:/.m2/repository" }
+        maven { url "C:/Users/user/.m2/repository" }
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
