@@ -1,5 +1,9 @@
 os: osx
 language: generic
+branches:
+  only:
+  - master
+  - stable
 before_script:
  - brew update
  - brew install --HEAD usbmuxd
