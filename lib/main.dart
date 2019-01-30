@@ -15,6 +15,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
+
+
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -47,35 +50,38 @@ class MyHomePageState extends State<MyHomePage> {
     Colors.white,
   ];
 
-  PageController controller = new PageController(initialPage: 2000);
+  PageController controller = new PageController(initialPage: 98);
 
   @override
   Widget build(BuildContext context) {
     return new PageView.builder(
         itemBuilder: (context, i) {
-          int posicion = i.abs();
-          if(posicion > 6) {
-            posicion = posicion % 8;
-          }
+          int posicion = i.abs() % 7;
 
           TextStyle textStyle = new TextStyle(fontSize: 400.0, color: textColors[posicion]);
 
-          return new Container(
-              padding: EdgeInsets.all(24.0),
-              color: bgColors[posicion],
-              child: widgetList(textStyle, posicion)
+          return Material(
+            type: MaterialType.transparency,
+            textStyle: textStyle,
+            child: new Container(
+                padding: EdgeInsets.all(24.0),
+                color: bgColors[posicion],
+                child: widgetList(textStyle, posicion)
+            ),
           );
         },
+      controller: controller,
     );
   }
 
 
   Widget widgetList(textStyle, position){
+    print(position);
       switch(position){
-        case 1: return Stack(
+        case 0: return Stack(
           children: <Widget>[
             Center(
-              child: Text("0", style: textStyle,),
+              child: Text("0"),
             ),
             Align(
               alignment: Alignment.bottomLeft,
@@ -83,11 +89,11 @@ class MyHomePageState extends State<MyHomePage> {
             )
           ],
         );
-        case 2: return Stack(
+        case 1: return Stack(
           fit: StackFit.expand,
           children: <Widget>[
             Center(
-              child: Text("1", style: textStyle,),
+              child: Text("1"),
             ),
             Align(
               alignment: Alignment.topRight,
@@ -95,10 +101,10 @@ class MyHomePageState extends State<MyHomePage> {
             )
           ],
         );
-        case 3: return Stack(
+        case 2: return Stack(
           children: <Widget>[
             Center(
-              child: Text("2", style: textStyle,),
+              child: Text("2"),
             ),
             Align(
               alignment: Alignment.bottomRight,
@@ -106,10 +112,10 @@ class MyHomePageState extends State<MyHomePage> {
             )
           ],
         );
-        case 4: return Stack(
+        case 3: return Stack(
           children: <Widget>[
             Center(
-              child: Text("3", style: textStyle,),
+              child: Text("3"),
             ),
             Align(
               alignment: Alignment.topLeft,
@@ -117,10 +123,10 @@ class MyHomePageState extends State<MyHomePage> {
             )
           ],
         );
-        case 5: return Stack(
+        case 4: return Stack(
           children: <Widget>[
             Center(
-              child: Text("5+", style: textStyle,),
+              child: Text("5+"),
             ),
             Align(
               alignment: Alignment.bottomCenter,
@@ -128,10 +134,10 @@ class MyHomePageState extends State<MyHomePage> {
             )
           ],
         );
-        case 6: return Stack(
+        case 5: return Stack(
           children: <Widget>[
             Center(
-              child: Text("%", style: textStyle,),
+              child: Text("%"),
             ),
             Align(
               alignment: Alignment.topLeft,
@@ -139,12 +145,12 @@ class MyHomePageState extends State<MyHomePage> {
             )
           ],
         );
-        case 7: return Stack(
+        case 6: return Stack(
           children: <Widget>[
             Align(
               alignment: Alignment.topCenter,
               child: Text(
-                "Pasteles!!", style: textStyle.copyWith(fontSize: 100.0),),
+                "Pasteles!!", style: textStyle.copyWith(fontSize: 80.0),),
             ),
             Center(
               child: Image.asset(

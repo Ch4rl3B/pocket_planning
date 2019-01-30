@@ -1,10 +1,10 @@
 buildscript {
     repositories {
-        jcenter()
-        google()
+        maven { url "D:/m2repository" }
+        maven { url "https://nexus.datys.cu/content/repositories/central/"}
         mavenCentral()
-//        maven { url "F:/.m2/repository" }
-        maven { url "C:/Users/user/.m2/repository" }
+        // jcenter()
+        // google()
     }
 
     dependencies {
@@ -14,11 +14,13 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
-        google()
+        maven { url "D:/m2repository" }
+        maven { url "https://nexus.datys.cu/content/repositories/central/"}
         mavenCentral()
-//        maven { url "F:/.m2/repository" }
-        maven { url "C:/Users/user/.m2/repository" }
+        // jcenter()
+        // google()
+        // maven { url "F:/.m2/repository" }
+
     }
 }
 
